@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 #include<conio.h>
 using namespace std;
 
@@ -13,7 +13,7 @@ using namespace std;
 
 class Tank
 {
-	const unsigned int VOLUME;	//Характеристика бака - его объем
+	const unsigned int VOLUME;	//РҐР°СЂР°РєС‚РµСЂРёСЃС‚РёРєР° Р±Р°РєР° - РµРіРѕ РѕР±СЉРµРј
 	double fuel_level;
 public:
 	unsigned int get_VOLUME()const
@@ -37,8 +37,8 @@ public:
 	Tank(const unsigned int volume) :
 		VOLUME(volume >= MIN_TANK_VOLUME && volume <= MAX_TANK_VOLUME ? volume : 60)
 	{
-		//Константный член класса можно проинициализировать только в списке инициализации конструктора
-		//(только в заголовке)
+		//РљРѕРЅСЃС‚Р°РЅС‚РЅС‹Р№ С‡Р»РµРЅ РєР»Р°СЃСЃР° РјРѕР¶РЅРѕ РїСЂРѕРёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ С‚РѕР»СЊРєРѕ РІ СЃРїРёСЃРєРµ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
+		//(С‚РѕР»СЊРєРѕ РІ Р·Р°РіРѕР»РѕРІРєРµ)
 		/*if (volume >= MIN_TANK_VOLUME && volume <= MAX_TANK_VOLUME)this->VOLUME = volume;
 		else this->VOLUME = 60;*/
 		this->fuel_level = 0;
@@ -58,9 +58,9 @@ public:
 
 class Engine
 {
-	double consumption;	//расход на 100 км
-	double consumption_per_second;	//расход за одну секунду
-	bool is_started;	//двигатель заведен или заглушен
+	double consumption;	//СЂР°СЃС…РѕРґ РЅР° 100 РєРј
+	double consumption_per_second;	//СЂР°СЃС…РѕРґ Р·Р° РѕРґРЅСѓ СЃРµРєСѓРЅРґСѓ
+	bool is_started;	//РґРІРёРіР°С‚РµР»СЊ Р·Р°РІРµРґРµРЅ РёР»Рё Р·Р°РіР»СѓС€РµРЅ
 public:
 	double get_consumption()const
 	{
@@ -147,7 +147,7 @@ public:
 			case Enter:
 				if (driver_inside)get_out();
 				else get_in();
-				break;	//Вход/Выход из машины
+				break;	//Р’С…РѕРґ/Р’С‹С…РѕРґ РёР· РјР°С€РёРЅС‹
 			}
 		} while (key != Escape);
 	}
@@ -202,7 +202,7 @@ void main()
 	int fuel;
 	while (true)
 	{
-		cout << "Введите объем топлива: "; cin >> fuel;
+		cout << "Р’РІРµРґРёС‚Рµ РѕР±СЉРµРј С‚РѕРїР»РёРІР°: "; cin >> fuel;
 		tank.fill(fuel);
 		tank.info();
 	}
@@ -218,7 +218,7 @@ void main()
 	/*bmw.control_car();*/
 	bmw.may_fill_car();
 	int fuel;
-	cout << "Введите объем топлива: "; cin >> fuel;
+	cout << "Р’РІРµРґРёС‚Рµ РѕР±СЉРµРј С‚РѕРїР»РёРІР°: "; cin >> fuel;
 	bmw.fill(fuel);
 	bmw.info();
 	
@@ -226,4 +226,4 @@ void main()
 
 
 
-//Добавить возможность заправлять машину по нажатии на клавишу 'f';
+//Р”РѕР±Р°РІРёС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р·Р°РїСЂР°РІР»СЏС‚СЊ РјР°С€РёРЅСѓ РїРѕ РЅР°Р¶Р°С‚РёРё РЅР° РєР»Р°РІРёС€Сѓ 'f';
