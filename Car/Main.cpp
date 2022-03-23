@@ -30,6 +30,10 @@ public:
 		if (this->fuel_level + fuel_level <= VOLUME)this->fuel_level += fuel_level;
 		else this->fuel_level = VOLUME;
 	}
+	void set_fuel_level(double fuel_level)
+	{
+		this->fuel_level = fuel_level;
+	}
 	Tank(const unsigned int volume) :
 		VOLUME(volume >= MIN_TANK_VOLUME && volume <= MAX_TANK_VOLUME ? volume : 60)
 	{
@@ -153,12 +157,37 @@ public:
 		cout << "Fuel level: " << tank.get_fuel_level() << " liters\n";
 		cout << "Engine is " << (engine.started() ? "started" : "stopped") << endl;
 	}
-
 	void info()const
 	{
 		engine.info();
 		tank.info();
 	}
+	void may_fill_car()
+	{
+		cout << "Press 'f' to fill the car" << endl;
+		char key;
+		key = _getch();
+		do
+		{
+			key = _getch();
+			switch (key)
+			{
+			case 'f':
+				if (tank.get_fuel_level() < tank.get_VOLUME())
+					cout << "You may to fill the car" << endl;
+				else cout << "The tank is full." << endl;
+				break;	
+			}
+		} while (key != Escape);
+	}
+	void fill(double fuel_level)
+	{
+		if (fuel_level <= 0)return;
+		if (tank.get_fuel_level() + fuel_level <= tank.get_VOLUME())
+			tank.set_fuel_level(tank.get_fuel_level() +fuel_level);
+		else tank.set_fuel_level(tank.get_VOLUME());
+	}
+	
 };
 
 //#define TANK_CHECK
@@ -185,6 +214,16 @@ void main()
 #endif // ENGINE_CHECK
 
 	Car bmw(12, 60);
-	//bmw.info();
-	bmw.control_car();
+	bmw.info();	
+	/*bmw.control_car();*/
+	bmw.may_fill_car();
+	int fuel;
+	cout << "Введите объем топлива: "; cin >> fuel;
+	bmw.fill(fuel);
+	bmw.info();
+	
 }
+
+
+
+//Добавить возможность заправлять машину по нажатии на клавишу 'f';
